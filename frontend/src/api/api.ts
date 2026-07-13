@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://edupredict-ai-1-ui9r.onrender.com",
+  baseURL: "https://edupredict-ai-cfl6.onrender.com",
 });
 
 export default API;
