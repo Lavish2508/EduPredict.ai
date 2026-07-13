@@ -254,7 +254,7 @@ function Dashboard() {
             label
           >
 
-            {pieData.map((entry, index) => (
+             pieData.map((_,index)=> (
 
               <Cell
                 key={index}

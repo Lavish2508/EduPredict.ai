@@ -13,7 +13,7 @@ app = FastAPI(
 # Allow React Frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://edupredict-ai-cfl6.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
