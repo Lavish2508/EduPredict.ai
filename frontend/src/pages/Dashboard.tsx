@@ -248,22 +248,18 @@ function Dashboard() {
         <PieChart>
 
           <Pie
-            data={pieData}
-            dataKey="value"
-            outerRadius={120}
-            label
-          >
-
-             pieData.map((_,index)=> (
-
-              <Cell
-                key={index}
-                fill={COLORS[index]}
-              />
-
-            ))}
-
-          </Pie>
+  data={pieData}
+  dataKey="value"
+  outerRadius={120}
+  label
+>
+  {pieData.map((_, index) => (
+    <Cell
+      key={index}
+      fill={COLORS[index % COLORS.length]}
+    />
+  ))}
+</Pie>
 
           <Tooltip />
 
