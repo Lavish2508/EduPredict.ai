@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 from routes.auth import router as auth_router
 from routes.prediction import router as prediction_router
 from routes.student import router as student_router
@@ -11,9 +12,14 @@ app = FastAPI(
 )
 
 # Allow React Frontend
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://edupredict-ai-cfl6.onrender.com"],
+    allow_origins=[
+        "https://edupredict-ai-1-ui9r.onrender.com",
+        "https://edupredict-ai-mj1b.onrender.com",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

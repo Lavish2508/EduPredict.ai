@@ -4,7 +4,12 @@ import os
 
 load_dotenv()
 
-client = MongoClient(os.getenv("MONGODB_URL"))
+mongo_url = os.getenv("MONGODB_URL")
+
+if not mongo_url:
+    raise Exception("MONGODB_URL is missing!")
+
+client = MongoClient(mongo_url)
 
 db = client[os.getenv("DATABASE_NAME")]
 

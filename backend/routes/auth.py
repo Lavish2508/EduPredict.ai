@@ -9,20 +9,32 @@ router = APIRouter()
 @router.post("/register")
 def register(user: User):
 
-    existing = users_collection.find_one({"email": user.email})
+    try:
 
-    if existing:
+        existing = users_collection.find_one({"email": str(user.email)})
+
+        if existing:
+            return {
+                "success": False,
+                "message": "Email already registered"
+            }
+
+        users_collection.insert_one({
+            "name": user.name,
+            "email": str(user.email),
+            "password": user.password
+        })
+
         return {
-            "success": False,
-            "message": "Email already registered"
+            "success": True,
+            "message": "Registration Successful"
         }
 
-    users_collection.insert_one(user.dict())
-
-    return {
-        "success": True,
-        "message": "Registration Successful"
-    }
+    except Exception as e:
+        return {
+            "success": False,
+            "message": str(e)
+        }   
 
 
 # ---------------- LOGIN ---------------- #
