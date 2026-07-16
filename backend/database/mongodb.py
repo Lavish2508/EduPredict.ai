@@ -2,9 +2,10 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
+# Load .env file
 load_dotenv()
 
-# Read Render Environment Variables
+# Read values from .env
 mongo_url = os.getenv("MONGODB_URL")
 database_name = os.getenv("DATABASE_NAME")
 
@@ -17,7 +18,7 @@ if not database_name:
 # Connect to MongoDB
 client = MongoClient(mongo_url)
 
-# Select Database
+# Database
 db = client[database_name]
 
 # Collections
