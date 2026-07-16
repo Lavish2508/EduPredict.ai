@@ -4,15 +4,23 @@ import os
 
 load_dotenv()
 
+# Read Render Environment Variables
 mongo_url = os.getenv("MONGODB_URL")
+database_name = os.getenv("DATABASE_NAME")
 
 if not mongo_url:
     raise Exception("MONGODB_URL is missing!")
 
+if not database_name:
+    raise Exception("DATABASE_NAME is missing!")
+
+# Connect to MongoDB
 client = MongoClient(mongo_url)
 
-db = client[os.getenv("DATABASE_NAME")]
+# Select Database
+db = client[database_name]
 
+# Collections
 users_collection = db["users"]
 prediction_collection = db["predictions"]
 
